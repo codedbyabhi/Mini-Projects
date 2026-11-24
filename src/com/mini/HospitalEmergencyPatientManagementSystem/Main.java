@@ -9,10 +9,10 @@ public class Main {
 		System.out.println("Enter Number of Patients : ");
 		int n = sc.nextInt();
 
-		PriorityQueue<Patient> queue = new PriorityQueue<Patient>();
+		PriorityQueue<Patient> queue = new PriorityQueue<Patient>(new PatientPriorityComparator());
 
 		for (int i = 1; i <= n; i++) {
-			System.out.println("Enter Patient Id, Name, Age and Priority : " + i);
+			System.out.println("Enter " + i + " Patient Id, Name, Age and Priority : ");
 			int id = sc.nextInt();
 			sc.nextLine();
 			String name = sc.nextLine();
@@ -22,11 +22,17 @@ public class Main {
 			queue.offer(new Patient(id, name, age, priority));
 		}
 
-		for (Patient p : queue) {
+		System.out.println("Next Patient : " + queue.peek());
+		System.out.println("All Patient in-Order : ");
+//		for (Patient p : queue) {
+//
+//			System.out.println(p);
+//		}
+		
+		while(!queue.isEmpty()) {
 			
-			System.out.println(p);
+			System.out.println(queue.poll());
 		}
-		
-		
+
 	}
 }
